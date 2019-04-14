@@ -1,8 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './plugin_use.dart';
 import './less_group_page.dart';
 import './stateful_group_page.dart';
 import './flutter_layout_page.dart';
+import './gesture_page.dart';
+import './resource_page.dart';
+import './launch_page.dart';
+import './photo_app_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,6 +30,10 @@ class MyApp extends StatelessWidget {
         'less': (BuildContext context) => StateLessGroupPage(),
         'ful': (BuildContext context) => StateFulGroupPage(),
         'layout': (BuildContext context) => FlutterLayoutPage(),
+        'gesture': (BuildContext context) => GesturePage(),
+        'resource': (BuildContext context) => ResourcePage(),
+        'launch': (BuildContext context) => LaunchPage(),
+        'photo': (BuildContext context) => PhotoAppPage(),
       },
     );
   }
@@ -56,6 +65,10 @@ class _RouteNavigatorState extends State<RouteNavigator> {
           _item('StatelessWidget与基础组件', StateLessGroupPage(), 'less'),
           _item('StateFulWidget与基础组件', StateFulGroupPage(), 'ful'),
           _item('如何进行Flutter布局开发', FlutterLayoutPage(), 'layout'),
+          _item('用户手势及点击事件', GesturePage(), 'gesture'),
+          _item('导入和使用Flutter的资源文件', ResourcePage(), 'resource'),
+          _item('打开第三方应用', LaunchPage(), 'launch'),
+          _item('photo', PhotoAppPage(), 'photo'),
         ],
       ),
     );
@@ -69,7 +82,7 @@ class _RouteNavigatorState extends State<RouteNavigator> {
             Navigator.pushNamed(context, routeName);
           } else {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => page));
+                context, CupertinoPageRoute(builder: (context) => page));
           }
         },
         child: Text(title),
