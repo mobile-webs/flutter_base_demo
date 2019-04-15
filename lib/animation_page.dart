@@ -69,6 +69,7 @@ class _AnimationPageState extends State<AnimationPage>
                 },
                 child: Text(
                   'Start',
+                  style: TextStyle(fontSize: 20),
                   textDirection: TextDirection.ltr,
                 ),
               ),
@@ -80,8 +81,12 @@ class _AnimationPageState extends State<AnimationPage>
                 'Value:${animationValue.toString()}',
                 textDirection: TextDirection.ltr,
               ),*/
-              AnimatedLogo(
+              /* AnimatedLogo(
                 animation: animation,
+              )*/
+              GrowTransiton(
+                animation: animation,
+                child: LogoWidget(),
               )
             ],
           ),
@@ -103,6 +108,36 @@ class AnimatedLogo extends AnimatedWidget {
       width: animation.value,
       height: animation.value,
       child: FlutterLogo(),
+    );
+  }
+}
+
+class LogoWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: FlutterLogo(),
+    );
+  }
+}
+
+class GrowTransiton extends StatelessWidget {
+  GrowTransiton({this.child, this.animation});
+
+  final Widget child;
+  final Animation<double> animation;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: animation,
+      builder: (context, child) => Container(
+            height: animation.value,
+            width: animation.value,
+            child: child,
+          ),
+      child: child,
     );
   }
 }
