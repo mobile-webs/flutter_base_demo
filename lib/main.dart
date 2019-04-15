@@ -8,6 +8,7 @@ import './gesture_page.dart';
 import './resource_page.dart';
 import './launch_page.dart';
 import './photo_app_page.dart';
+import './animation_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         'resource': (BuildContext context) => ResourcePage(),
         'launch': (BuildContext context) => LaunchPage(),
         'photo': (BuildContext context) => PhotoAppPage(),
+        'animation': (BuildContext context) => AnimationPage(),
       },
     );
   }
@@ -69,6 +71,7 @@ class _RouteNavigatorState extends State<RouteNavigator> {
           _item('导入和使用Flutter的资源文件', ResourcePage(), 'resource'),
           _item('打开第三方应用', LaunchPage(), 'launch'),
           _item('photo', PhotoAppPage(), 'photo'),
+          _item('animation', AnimationPage(), 'animation'),
         ],
       ),
     );
