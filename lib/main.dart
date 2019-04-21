@@ -14,6 +14,10 @@ import './tabbed_app_bar_page.dart';
 import './http_page.dart';
 import './future_page.dart';
 import './shared_preferences_page.dart';
+import './list_page.dart';
+import './expansion_title_page.dart';
+import './grid_view_page.dart';
+import './advanced_list_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -47,6 +51,10 @@ class MyApp extends StatelessWidget {
         'http': (BuildContext context) => TestHttp(),
         'future': (BuildContext context) => TestFuture(),
         'sharedPreferences': (BuildContext context) => TestSharedPreferences(),
+        'list': (BuildContext context) => ListPage(),
+        'expansionTitle': (BuildContext context) => ExpansionTitlePage(),
+        'gridView': (BuildContext context) => GridViewPage(),
+        'advancedList': (BuildContext context) => AdvancedListPage(),
       },
     );
   }
@@ -84,14 +92,18 @@ class _RouteNavigatorState extends State<RouteNavigator> {
             _item('导入和使用Flutter的资源文件', ResourcePage(), 'resource'),
             _item('打开第三方应用', LaunchPage(), 'launch'),
             _item('photo', PhotoAppPage(), 'photo'),
-            _item('普通动画', AnimationPage(), 'animation'),
-            _item('hero动画', HeroAnimationPage(), 'hero'),
-            _item('径向hero动画', RadialExpansionDemo(), 'radialHero'),
             _item('顶部tab', TabbedAppBarPage(), 'tabbedAppBar'),
             _item('http使用', TestHttp(), 'http'),
             _item('future使用', TestHttp(), 'future'),
             _item('sharedPreferences使用', TestSharedPreferences(),
                 'sharedPreferences'),
+            _item('基础list使用', ListPage(), 'list'),
+            _item('高级列表使用', AdvancedListPage(), 'advancedList'),
+            _item('expansionTitle使用', ExpansionTitlePage(), 'expansionTitle'),
+            _item('网格布局', GridViewPage(), 'gridView'),
+            _item('普通动画', AnimationPage(), 'animation'),
+            _item('hero动画', HeroAnimationPage(), 'hero'),
+            _item('径向hero动画', RadialExpansionDemo(), 'radialHero'),
           ],
         ),
       ],
