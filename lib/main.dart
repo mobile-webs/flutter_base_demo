@@ -10,6 +10,10 @@ import './launch_page.dart';
 import './photo_app_page.dart';
 import './animation_page.dart';
 import './hero_animation_page.dart';
+import './tabbed_app_bar_page.dart';
+import './http_page.dart';
+import './future_page.dart';
+import './shared_preferences_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,6 +43,10 @@ class MyApp extends StatelessWidget {
         'animation': (BuildContext context) => AnimationPage(),
         'hero': (BuildContext context) => HeroAnimationPage(),
         'radialHero': (BuildContext context) => RadialExpansionDemo(),
+        'tabbedAppBar': (BuildContext context) => TabbedAppBarPage(),
+        'http': (BuildContext context) => TestHttp(),
+        'future': (BuildContext context) => TestFuture(),
+        'sharedPreferences': (BuildContext context) => TestSharedPreferences(),
       },
     );
   }
@@ -57,7 +65,7 @@ class _RouteNavigatorState extends State<RouteNavigator> {
     return Container(
         child: ListView(
       children: <Widget>[
-        Column(
+        Wrap(
           children: <Widget>[
             SwitchListTile(
               title: Text('${byName ? '' : '不'}通过路由名称跳转'),
@@ -79,6 +87,11 @@ class _RouteNavigatorState extends State<RouteNavigator> {
             _item('普通动画', AnimationPage(), 'animation'),
             _item('hero动画', HeroAnimationPage(), 'hero'),
             _item('径向hero动画', RadialExpansionDemo(), 'radialHero'),
+            _item('顶部tab', TabbedAppBarPage(), 'tabbedAppBar'),
+            _item('http使用', TestHttp(), 'http'),
+            _item('future使用', TestHttp(), 'future'),
+            _item('sharedPreferences使用', TestSharedPreferences(),
+                'sharedPreferences'),
           ],
         ),
       ],
@@ -87,6 +100,7 @@ class _RouteNavigatorState extends State<RouteNavigator> {
 
   _item(String title, Widget page, String routeName) {
     return Container(
+      margin: EdgeInsets.all(10),
       child: RaisedButton(
         onPressed: () {
           if (byName) {
