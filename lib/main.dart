@@ -1,23 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './plugin_use.dart';
-import './less_group_page.dart';
-import './stateful_group_page.dart';
-import './flutter_layout_page.dart';
-import './gesture_page.dart';
-import './resource_page.dart';
-import './launch_page.dart';
-import './photo_app_page.dart';
-import './animation_page.dart';
-import './hero_animation_page.dart';
-import './tabbed_app_bar_page.dart';
-import './http_page.dart';
-import './future_page.dart';
-import './shared_preferences_page.dart';
-import './list_page.dart';
-import './expansion_title_page.dart';
-import './grid_view_page.dart';
-import './advanced_list_page.dart';
+import 'package:flutter_base_demo/advanced_list_page.dart';
+import 'package:flutter_base_demo/amap_location.dart';
+import 'package:flutter_base_demo/amap_search.dart';
+import 'package:flutter_base_demo/animation_page.dart';
+import 'package:flutter_base_demo/az_list_page.dart';
+import 'package:flutter_base_demo/dio_page.dart';
+import 'package:flutter_base_demo/expansion_title_page.dart';
+import 'package:flutter_base_demo/flutter_layout_page.dart';
+import 'package:flutter_base_demo/future_page.dart';
+import 'package:flutter_base_demo/gesture_page.dart';
+import 'package:flutter_base_demo/grid_view_page.dart';
+import 'package:flutter_base_demo/hero_animation_page.dart';
+import 'package:flutter_base_demo/http_page.dart';
+import 'package:flutter_base_demo/launch_page.dart';
+import 'package:flutter_base_demo/less_group_page.dart';
+import 'package:flutter_base_demo/list_page.dart';
+import 'package:flutter_base_demo/photo_app_page.dart';
+import 'package:flutter_base_demo/plugin_use.dart';
+import 'package:flutter_base_demo/resource_page.dart';
+import 'package:flutter_base_demo/shared_preferences_page.dart';
+import 'package:flutter_base_demo/stateful_group_page.dart';
+import 'package:flutter_base_demo/tabbed_app_bar_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -55,6 +59,10 @@ class MyApp extends StatelessWidget {
         'expansionTitle': (BuildContext context) => ExpansionTitlePage(),
         'gridView': (BuildContext context) => GridViewPage(),
         'advancedList': (BuildContext context) => AdvancedListPage(),
+        'dio': (BuildContext context) => DioPage(),
+        'amapLocation': (BuildContext context) => AmapLocation(),
+        'amapSearch': (BuildContext context) => AmapSearch(),
+        'azList': (BuildContext context) => AzListPage(),
       },
     );
   }
@@ -70,50 +78,56 @@ class _RouteNavigatorState extends State<RouteNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: ListView(
+    return Column(
       children: <Widget>[
-        Wrap(
-          children: <Widget>[
-            SwitchListTile(
-              title: Text('${byName ? '' : '不'}通过路由名称跳转'),
-              value: byName,
-              onChanged: (value) {
-                setState(() {
-                  byName = value;
-                });
-              },
-            ),
-            _item('plugin使用', PluginUsePage(), 'plugin'),
-            _item('StatelessWidget与基础组件', StateLessGroupPage(), 'less'),
-            _item('StateFulWidget与基础组件', StateFulGroupPage(), 'ful'),
-            _item('如何进行Flutter布局开发', FlutterLayoutPage(), 'layout'),
-            _item('用户手势及点击事件', GesturePage(), 'gesture'),
-            _item('导入和使用Flutter的资源文件', ResourcePage(), 'resource'),
-            _item('打开第三方应用', LaunchPage(), 'launch'),
-            _item('photo', PhotoAppPage(), 'photo'),
-            _item('顶部tab', TabbedAppBarPage(), 'tabbedAppBar'),
-            _item('http使用', TestHttp(), 'http'),
-            _item('future使用', TestHttp(), 'future'),
-            _item('sharedPreferences使用', TestSharedPreferences(),
-                'sharedPreferences'),
-            _item('基础list使用', ListPage(), 'list'),
-            _item('高级列表使用', AdvancedListPage(), 'advancedList'),
-            _item('expansionTitle使用', ExpansionTitlePage(), 'expansionTitle'),
-            _item('网格布局', GridViewPage(), 'gridView'),
-            _item('普通动画', AnimationPage(), 'animation'),
-            _item('hero动画', HeroAnimationPage(), 'hero'),
-            _item('径向hero动画', RadialExpansionDemo(), 'radialHero'),
-          ],
-        ),
+        SwitchListTile(
+            title: Text('${byName ? '' : '不'}通过路由名称跳转'),
+            value: byName,
+            onChanged: (value) {
+              setState(() {
+                byName = value;
+              });
+            }),
+        Flexible(
+          child: GridView.count(
+            crossAxisCount: 3,
+            children: <Widget>[
+              _item('plugin使用', PluginUsePage(), 'plugin'),
+              _item('StatelessWidget与基础组件', StateLessGroupPage(), 'less'),
+              _item('StateFulWidget与基础组件', StateFulGroupPage(), 'ful'),
+              _item('如何进行Flutter布局开发', FlutterLayoutPage(), 'layout'),
+              _item('用户手势及点击事件', GesturePage(), 'gesture'),
+              _item('导入和使用Flutter的资源文件', ResourcePage(), 'resource'),
+              _item('打开第三方应用', LaunchPage(), 'launch'),
+              _item('photo', PhotoAppPage(), 'photo'),
+              _item('顶部tab', TabbedAppBarPage(), 'tabbedAppBar'),
+              _item('http使用', TestHttp(), 'http'),
+              _item('future使用', TestHttp(), 'future'),
+              _item('sharedPreferences使用', TestSharedPreferences(),
+                  'sharedPreferences'),
+              _item('基础list使用', ListPage(), 'list'),
+              _item('高级列表使用', AdvancedListPage(), 'advancedList'),
+              _item('expansionTitle使用', ExpansionTitlePage(), 'expansionTitle'),
+              _item('网格布局', GridViewPage(), 'gridView'),
+              _item('dio使用', DioPage(), 'dio'),
+              _item('高德地图定位', AmapLocation(), 'amapLocation'),
+              _item('高德地图搜索', AmapSearch(), 'amapSearch'),
+              _item('城市索引', AzListPage(), 'azList'),
+              _item('普通动画', AnimationPage(), 'animation'),
+              _item('hero动画', HeroAnimationPage(), 'hero'),
+              _item('径向hero动画', RadialExpansionDemo(), 'radialHero'),
+            ],
+          ),
+        )
       ],
-    ));
+    );
   }
 
   _item(String title, Widget page, String routeName) {
     return Container(
       margin: EdgeInsets.all(10),
       child: RaisedButton(
+        color: Colors.indigo,
         onPressed: () {
           if (byName) {
             Navigator.pushNamed(context, routeName);
@@ -122,7 +136,10 @@ class _RouteNavigatorState extends State<RouteNavigator> {
                 context, CupertinoPageRoute(builder: (context) => page));
           }
         },
-        child: Text(title),
+        child: Text(
+          title,
+          style: TextStyle(color: Colors.white),
+        ),
       ),
     );
   }
