@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_demo/pages/advanced_list_page.dart';
 import 'package:flutter_base_demo/pages/amap_location.dart';
+import 'package:flutter_base_demo/pages/amap_map.dart';
 import 'package:flutter_base_demo/pages/amap_search.dart';
 import 'package:flutter_base_demo/pages/animation_page.dart';
 import 'package:flutter_base_demo/pages/az_list_page.dart';
@@ -23,6 +24,7 @@ import 'package:flutter_base_demo/pages/resource_page.dart';
 import 'package:flutter_base_demo/pages/shared_preferences_page.dart';
 import 'package:flutter_base_demo/pages/stateful_group_page.dart';
 import 'package:flutter_base_demo/pages/tabbed_app_bar_page.dart';
+import 'package:flutter_base_demo/pages/toast_page.dart';
 
 void main() async {
   await AMap.init('27d67839721288be2ddd87b4fd868822');
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
           appBar: AppBar(
-            title: Text('这是标题'),
+            title: Text('Flutter学习demo'),
           ),
           body: RouteNavigator()),
       routes: <String, WidgetBuilder>{
@@ -67,6 +69,8 @@ class MyApp extends StatelessWidget {
         'amapLocation': (BuildContext context) => AmapLocationPage(),
         'amapSearch': (BuildContext context) => AmapSearch(),
         'azList': (BuildContext context) => AzListPage(),
+        'toast': (BuildContext context) => ToastPage(),
+        'amapMap': (BuildContext context) => AmapMapPage(),
       },
     );
   }
@@ -114,9 +118,11 @@ class _RouteNavigatorState extends State<RouteNavigator> {
               _item('expansionTitle使用', ExpansionTitlePage(), 'expansionTitle'),
               _item('网格布局', GridViewPage(), 'gridView'),
               _item('dio使用', DioPage(), 'dio'),
+              _item('高德地图', AmapMapPage(), 'amapMap'),
               _item('高德地图定位', AmapLocationPage(), 'amapLocation'),
               _item('高德地图搜索', AmapSearch(), 'amapSearch'),
               _item('城市索引', AzListPage(), 'azList'),
+              _item('toast', ToastPage(), 'ToastPage'),
               _item('普通动画', AnimationPage(), 'animation'),
               _item('hero动画', HeroAnimationPage(), 'hero'),
               _item('径向hero动画', RadialExpansionDemo(), 'radialHero'),
