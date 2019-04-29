@@ -1,29 +1,33 @@
+import 'package:amap_base/amap_base.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base_demo/advanced_list_page.dart';
-import 'package:flutter_base_demo/amap_location.dart';
-import 'package:flutter_base_demo/amap_search.dart';
-import 'package:flutter_base_demo/animation_page.dart';
-import 'package:flutter_base_demo/az_list_page.dart';
-import 'package:flutter_base_demo/dio_page.dart';
-import 'package:flutter_base_demo/expansion_title_page.dart';
-import 'package:flutter_base_demo/flutter_layout_page.dart';
-import 'package:flutter_base_demo/future_page.dart';
-import 'package:flutter_base_demo/gesture_page.dart';
-import 'package:flutter_base_demo/grid_view_page.dart';
-import 'package:flutter_base_demo/hero_animation_page.dart';
-import 'package:flutter_base_demo/http_page.dart';
-import 'package:flutter_base_demo/launch_page.dart';
-import 'package:flutter_base_demo/less_group_page.dart';
-import 'package:flutter_base_demo/list_page.dart';
-import 'package:flutter_base_demo/photo_app_page.dart';
-import 'package:flutter_base_demo/plugin_use.dart';
-import 'package:flutter_base_demo/resource_page.dart';
-import 'package:flutter_base_demo/shared_preferences_page.dart';
-import 'package:flutter_base_demo/stateful_group_page.dart';
-import 'package:flutter_base_demo/tabbed_app_bar_page.dart';
+import 'package:flutter_base_demo/pages/advanced_list_page.dart';
+import 'package:flutter_base_demo/pages/amap_location.dart';
+import 'package:flutter_base_demo/pages/amap_search.dart';
+import 'package:flutter_base_demo/pages/animation_page.dart';
+import 'package:flutter_base_demo/pages/az_list_page.dart';
+import 'package:flutter_base_demo/pages/dio_page.dart';
+import 'package:flutter_base_demo/pages/expansion_title_page.dart';
+import 'package:flutter_base_demo/pages/flutter_layout_page.dart';
+import 'package:flutter_base_demo/pages/future_page.dart';
+import 'package:flutter_base_demo/pages/gesture_page.dart';
+import 'package:flutter_base_demo/pages/grid_view_page.dart';
+import 'package:flutter_base_demo/pages/hero_animation_page.dart';
+import 'package:flutter_base_demo/pages/http_page.dart';
+import 'package:flutter_base_demo/pages/launch_page.dart';
+import 'package:flutter_base_demo/pages/less_group_page.dart';
+import 'package:flutter_base_demo/pages/list_page.dart';
+import 'package:flutter_base_demo/pages/photo_app_page.dart';
+import 'package:flutter_base_demo/pages/plugin_use.dart';
+import 'package:flutter_base_demo/pages/resource_page.dart';
+import 'package:flutter_base_demo/pages/shared_preferences_page.dart';
+import 'package:flutter_base_demo/pages/stateful_group_page.dart';
+import 'package:flutter_base_demo/pages/tabbed_app_bar_page.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  await AMap.init('27d67839721288be2ddd87b4fd868822');
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -60,7 +64,7 @@ class MyApp extends StatelessWidget {
         'gridView': (BuildContext context) => GridViewPage(),
         'advancedList': (BuildContext context) => AdvancedListPage(),
         'dio': (BuildContext context) => DioPage(),
-        'amapLocation': (BuildContext context) => AmapLocation(),
+        'amapLocation': (BuildContext context) => AmapLocationPage(),
         'amapSearch': (BuildContext context) => AmapSearch(),
         'azList': (BuildContext context) => AzListPage(),
       },
@@ -110,7 +114,7 @@ class _RouteNavigatorState extends State<RouteNavigator> {
               _item('expansionTitle使用', ExpansionTitlePage(), 'expansionTitle'),
               _item('网格布局', GridViewPage(), 'gridView'),
               _item('dio使用', DioPage(), 'dio'),
-              _item('高德地图定位', AmapLocation(), 'amapLocation'),
+              _item('高德地图定位', AmapLocationPage(), 'amapLocation'),
               _item('高德地图搜索', AmapSearch(), 'amapSearch'),
               _item('城市索引', AzListPage(), 'azList'),
               _item('普通动画', AnimationPage(), 'animation'),

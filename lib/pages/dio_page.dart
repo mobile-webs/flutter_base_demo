@@ -1,7 +1,5 @@
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 const TEST_URL =
     'https://apk-1256738511.file.myqcloud.com/FlutterTrip/data/travel_page.json';

@@ -6,7 +6,7 @@ import 'dart:math' as math;
 class HeroAnimationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    timeDilation = 5.0;
+    timeDilation = 2.0;
     return Scaffold(
       appBar: AppBar(
         title: Text('hero动画'),
@@ -156,7 +156,7 @@ class RadialExpansionDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    timeDilation = 5.0;
+    timeDilation = 2.0;
     return Scaffold(
         appBar: AppBar(
           title: Text('径向hero动画'),
